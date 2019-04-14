@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity
     private MyAdapter myAdapter;
     private Boolean is =true;
     private  ArrayList<Gioithieu> gioithieus = new ArrayList<>();
+    private FrameLayout layout;
 
 
     @Override
@@ -39,17 +41,31 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //code new
+
+
+        layout=findViewById(R.id.FrameLayout);
+
+
+
+        //
        
         lvList = findViewById(R.id.lvList);
         gioithieus.clear();
         addrecyclerview();
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        final FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    if (is){
+                    // VISIBLE:Hiện lên
+                    lvList.setVisibility(View.VISIBLE);
+                    //INVISIBLE:ẨN ĐI
+                    layout.setVisibility(View.INVISIBLE);
+
+                    if (is==true){
                        
                         gioithieus.add(new Gioithieu(R.drawable.anh,R.drawable.ic_menu_camera,R.drawable.ic_menu_share));
                         gioithieus.add(new Gioithieu(R.drawable.anh1,R.drawable.ic_menu_camera,R.drawable.ic_menu_share));
@@ -134,21 +150,30 @@ public class MainActivity extends AppCompatActivity
 
         switch (id) {
             case R.id.nav_First:
+
                 fragmentTransaction.replace(R.id.FrameLayout, new Fragment_First()).commit();
+
                 break;
             case R.id.nav_Second:
                 fragmentTransaction.replace(R.id.FrameLayout, new Fragment_Second()).commit();
+
                 break;
             case R.id.nav_Third:
                 fragmentTransaction.replace(R.id.FrameLayout, new Fragment_Third()).commit();
+
                 break;
             case R.id.nav_SubItem1:
                 fragmentTransaction.replace(R.id.FrameLayout, new Fragment_Sub_Item1()).commit();
+
                 break;
             case R.id.nav_SubItem2:
                 fragmentTransaction.replace(R.id.FrameLayout, new Fragment_Sub_Item2()).commit();
+
                 break;
         }
+        is=true;
+        lvList.setVisibility(View.INVISIBLE);
+        layout.setVisibility(View.VISIBLE);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
