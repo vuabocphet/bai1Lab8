@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_First"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="First" />
+        <item
+            android:id="@+id/nav_Second"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Second" />
+        <item
+            android:id="@+id/nav_Third"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Third" />
+    </group>
+
+    <item android:title="Sub items">
+        <menu>
+            <item
+                android:id="@+id/nav_SubItem1"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Sub Item 1" />
+            <item
+                android:id="@+id/nav_SubItem2"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Sub Item 2" />
+        </menu>
+    </item>
+
+</menu>
